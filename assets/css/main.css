@@ -6,6 +6,8 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+:root { --fg-rgb: 238,238,238; }
+[data-theme="dark"] { --fg-rgb: 238,238,238; }
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -3954,3 +3956,346 @@ input, select, textarea {
 			visibility: visible;
 		}
 		
+		/* SKILLS */
+.skills-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	gap: 1.5rem;
+	margin-top: 1.5rem;
+	justify-items: center;
+  }
+  
+  .skill {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: transform 0.2s;
+  }
+  
+  .skill:hover {
+	transform: translateY(-4px);
+  }
+  
+  .icon-circle {
+	background: rgba(79, 195, 247, 0.1);
+	border-radius: 50%;
+	width: 60px;
+	height: 60px;
+	display: grid;
+	place-items: center;
+	margin-bottom: 0.5rem;
+  }
+  
+  .icon-circle i {
+	color: #4fc3f7;
+	font-size: 1.5rem;
+  }
+  
+  .skill span {
+	font-size: 0.9rem;
+	color: #ececec;
+  }
+
+/* Preloader Styles */
+#preloader {
+	position: fixed;
+	inset: 0;
+	background: #0f172a;   /* same as your wrapper bg */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	overflow: hidden;
+  }
+  
+  .loader-content {
+	text-align: center;
+  }
+  
+  .loader-logo {
+	font-size: 3rem;
+	color: #4fc3f7;
+	margin-bottom: 1rem;
+	animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .ripple-circle {
+	width: 80px;
+	height: 80px;
+	border: 3px solid #4fc3f7;
+	border-radius: 50%;
+	animation: ripple 1.5s ease-out infinite;
+	margin: 0 auto;
+  }
+  
+  @keyframes glow {
+	from { text-shadow: 0 0 5px #4fc3f7; }
+	to   { text-shadow: 0 0 20px #4fc3f7; }
+  }
+  
+  @keyframes ripple {
+	0% {
+	  transform: scale(0.8);
+	  opacity: 1;
+	}
+	100% {
+	  transform: scale(2.5);
+	  opacity: 0;
+	}
+  }
+  /* Preloader overlay */
+#preloader {
+	position: fixed;
+	inset: 0;
+	background: #1f253e;     /* match your dark theme */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+  }
+  
+  /* The little bar-chart container */
+  .bar-chart {
+	display: flex;
+	gap: 0.4rem;
+	align-items: flex-end;
+  }
+  
+  /* Each bar */
+  .bar {
+	width: 8px;
+	height: 20%;
+	background: #4fc3f7;
+	border-radius: 4px;
+	animation: barGrow 0.8s ease-in-out infinite;
+	animation-delay: var(--delay);
+  }
+  
+  /* Pulse animation */
+  @keyframes barGrow {
+	0%, 100% { transform: scaleY(0.3); }
+	50%      { transform: scaleY(1); }
+  }
+  /* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #1f253e;     /* match your page background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.bar-chart {
+  display: flex;
+  gap: 0.4rem;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 8px;
+  height: 20px;
+  background: #4fc3f7;
+  border-radius: 4px;
+  transform-origin: bottom;
+  animation: barGrow 0.8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+@keyframes barGrow {
+  0%, 100% { transform: scaleY(0.3); }
+  50%      { transform: scaleY(1); }
+}/* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
+/* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
+#preloader {
+	position: fixed;
+	inset: 0;
+	background: #1f253e;     /* match your page background */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+  }
+  
+  .bar-chart {
+	display: flex;
+	gap: 0.4rem;
+	align-items: flex-end;
+  }
+  
+  .bar {
+	width: 8px;
+	height: 20px;
+	background: #4fc3f7;
+	border-radius: 4px;
+	transform-origin: bottom;
+	animation: barGrow 0.8s ease-in-out infinite;
+	animation-delay: var(--delay);
+  }
+  
+  @keyframes barGrow {
+	0%, 100% { transform: scaleY(0.3); }
+	50%      { transform: scaleY(1); }
+  }
+  /* make the footer copyright text pop */
+  #footer .copyright li:first-child {
+	color: #ccc;
+  }
+  #footer .copyright li:last-child {
+	color: #888;
+  }
+  /* 1. Cursor‐follow glow */
+#banner {
+	position: relative;
+	overflow: hidden;
+	--mouse-x: 50vw;
+	--mouse-y: 50vh;
+  }
+  #banner::before {
+	content: "";
+	position: absolute;
+	top: var(--mouse-y);
+	left: var(--mouse-x);
+	width: 300px; height: 300px;
+	transform: translate(-50%, -50%);
+	background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 60%);
+	pointer-events: none;
+	transition: top 0.1s, left 0.1s;
+	mix-blend-mode: overlay;
+  }
+  
+  /* 2. Parallax layers */
+  .parallax-layer {
+	position: absolute;
+	top: 0; left: 50%;
+	transform: translateX(-50%);
+	width: 120%; opacity: 0.15;
+	pointer-events: none;
+	will-change: transform;
+  }
+  .parallax-layer img {
+	display: block;
+	width: 100%;
+  }
+  
+  /* 3. Typed headline */
+  #typed-headline {
+	display: inline-block;
+	font-weight: bold;
+	font-size: 2.5rem;
+	color: #fff;
+  }
+  /* Cursor blink for Typed headline */
+.typed-cursor {
+	color: #4fc3f7;
+	animation: blink 0.7s infinite;
+  }
+  @keyframes blink {
+	0%, 50%   { opacity: 1; }
+	50.1%, 100% { opacity: 0; }
+  }
+  
+  /* 1) Base card styles */
+  #two .tiles article {
+	position: relative;
+	transition: transform 0.3s ease,
+				box-shadow 0.3s ease,
+				border-color 0.3s ease;
+	border: 2px solid transparent;
+	overflow: visible; /* so badges can slide in */
+  }
+  
+  /* 2) Hover: scale up + shadow + border glow */
+  #two .tiles article:hover {
+	transform: scale(1.03);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	border-color: var(--accent-color, #4fc3f7);
+  }
+  
+  /* 3) Badges container (hidden below by default) */
+  #two .tiles article .badges {
+	position: absolute;
+	bottom: -40px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 0.6rem;
+	opacity: 0;
+	transition: bottom 0.4s ease,
+				opacity 0.4s ease;
+  }
+  
+  /* 4) On hover: lift badges into view */
+  #two .tiles article:hover .badges {
+	bottom: 16px;
+	opacity: 1;
+  }
+  
+  /* 5) Individual badge styling */
+  #two .tiles article .badges i {
+	font-size: 1.2rem;
+	color: var(--accent-color, #4fc3f7);
+  }
+  /* — Sticky, shrinking header — */
+#header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	transition: padding 0.3s ease, background 0.3s ease;
+	padding: 1rem 2rem;
+	z-index: 1000;
+	background: var(--bg); /* so it stays opaque */
+  }
+  
+  #header.shrink {
+	padding: 0.4rem 2rem;
+	background: var(--bg); /* you could even darken bg here if you like */
+  }
+  nav .links a.active {
+	border-bottom: 2px solid var(--accent-color, #4fc3f7);
+	color: var(--accent-color, #4fc3f7);
+  }
+  /* — Particle dots behind footer — */
+#footer {
+	position: relative;
+	overflow: hidden;
+  }
+  
+  #footer::before {
+	content: '';
+	position: absolute;
+	width: 200%; height: 200%;
+	top: -50%; left: -50%;
+	background:
+	  radial-gradient(circle at 20% 30%, rgba(var(--fg-rgb),0.1) 1px, transparent 1px),
+	  radial-gradient(circle at 70% 80%, rgba(var(--fg-rgb),0.1) 2px, transparent 2px);
+	background-size: 50px 50px, 80px 80px;
+	animation: floatDots 10s linear infinite;
+	z-index: 0;
+  }
+  
+  @keyframes floatDots {
+	from { transform: translate(0,0); }
+	to   { transform: translate(100px,100px); }
+  }
+  
+  /* ensure footer contents sit above the dots */
+  #footer .inner {
+	position: relative;
+	z-index: 1;
+  }
+  /* — Social icon pulse on hover — */
+#footer .icons a {
+	display: inline-block;
+	transition: transform 0.2s ease;
+  }
+  
+  #footer .icons a:hover {
+	animation: pulse 0.6s ease;
+  }
+  
+  @keyframes pulse {
+	0%, 100% { transform: scale(1); }
+	50%       { transform: scale(1.2); }
+  }
