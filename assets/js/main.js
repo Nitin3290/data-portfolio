@@ -3,7 +3,6 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
-
 (function($) {
 
 	var	$window = $(window),
@@ -333,3 +332,69 @@
 			});
 
 })(jQuery);
+// ---- Typing headline ----
+document.addEventListener('DOMContentLoaded', () => {
+	const text   = "Hi, I’m K S Nitin";
+	const el     = document.getElementById('typed-headline');
+	const cursor = document.querySelector('.typed-cursor');
+	let idx = 0;
+  
+	function type() {
+	  if (idx < text.length) {
+		el.textContent += text[idx++];
+		setTimeout(type, 100);
+	  }
+	}
+	type();
+  });
+  
+  // ---- Cursor-follow glow ----
+  (function() {
+	const banner = document.getElementById('banner');
+	banner.addEventListener('mousemove', e => {
+	  banner.style.setProperty('--mouse-x',  e.clientX + 'px');
+	  banner.style.setProperty('--mouse-y',  e.clientY + 'px');
+	});
+  })();
+  
+  // ---- Parallax on scroll ----
+  (function() {
+	const layers = document.querySelectorAll('.parallax-layer');
+	window.addEventListener('scroll', () => {
+	  const y = window.scrollY;
+	  layers.forEach(layer => {
+		const depth = parseFloat(layer.dataset.depth);
+		layer.style.transform = `translate(-50%, ${y * depth}px)`;
+	  });
+	});
+  })();
+  // Project card tilt
+VanillaTilt.init(document.querySelectorAll("#two .tiles article"), {
+	max:          10,
+	speed:        400,
+	glare:        true,
+	"max-glare":  0.2,
+  });
+// — Header shrink on scroll —
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) header.classList.add('shrink');
+  else header.classList.remove('shrink');
+});
+// — Active section nav highlighting —
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav .links a');
+
+function highlightNav(){
+  let scrollY = window.pageYOffset;
+  sections.forEach(sec => {
+    const top   = sec.offsetTop - header.offsetHeight - 10;
+    const bottom= top + sec.offsetHeight;
+    const id    = sec.getAttribute('id');
+    if(scrollY >= top && scrollY < bottom){
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${id}`));
+    }
+  });
+}
+
+window.addEventListener('scroll', highlightNav);
