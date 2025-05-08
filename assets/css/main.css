@@ -3125,7 +3125,7 @@ input, select, textarea {
 		letter-spacing: 0.25em;
 		line-height: 3.25em;
 		margin: 0;
-		position: fixed;
+		position: relative;
 		text-transform: uppercase;
 		top: 0;
 		width: 100%;
