@@ -3996,122 +3996,11 @@ input, select, textarea {
 	color: #ececec;
   }
 
-/* Preloader Styles */
+/* ─── Preloader Overlay & Animated Bars ────────────────────────────── */
 #preloader {
 	position: fixed;
 	inset: 0;
-	background: #0f172a;   /* same as your wrapper bg */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 9999;
-	overflow: hidden;
-  }
-  
-  .loader-content {
-	text-align: center;
-  }
-  
-  .loader-logo {
-	font-size: 3rem;
-	color: #4fc3f7;
-	margin-bottom: 1rem;
-	animation: glow 2s ease-in-out infinite alternate;
-  }
-  
-  .ripple-circle {
-	width: 80px;
-	height: 80px;
-	border: 3px solid #4fc3f7;
-	border-radius: 50%;
-	animation: ripple 1.5s ease-out infinite;
-	margin: 0 auto;
-  }
-  
-  @keyframes glow {
-	from { text-shadow: 0 0 5px #4fc3f7; }
-	to   { text-shadow: 0 0 20px #4fc3f7; }
-  }
-  
-  @keyframes ripple {
-	0% {
-	  transform: scale(0.8);
-	  opacity: 1;
-	}
-	100% {
-	  transform: scale(2.5);
-	  opacity: 0;
-	}
-  }
-  /* Preloader overlay */
-#preloader {
-	position: fixed;
-	inset: 0;
-	background: #1f253e;     /* match your dark theme */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 9999;
-  }
-  
-  /* The little bar-chart container */
-  .bar-chart {
-	display: flex;
-	gap: 0.4rem;
-	align-items: flex-end;
-  }
-  
-  /* Each bar */
-  .bar {
-	width: 8px;
-	height: 20%;
-	background: #4fc3f7;
-	border-radius: 4px;
-	animation: barGrow 0.8s ease-in-out infinite;
-	animation-delay: var(--delay);
-  }
-  
-  /* Pulse animation */
-  @keyframes barGrow {
-	0%, 100% { transform: scaleY(0.3); }
-	50%      { transform: scaleY(1); }
-  }
-  /* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: #1f253e;     /* match your page background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.bar-chart {
-  display: flex;
-  gap: 0.4rem;
-  align-items: flex-end;
-}
-
-.bar {
-  width: 8px;
-  height: 20px;
-  background: #4fc3f7;
-  border-radius: 4px;
-  transform-origin: bottom;
-  animation: barGrow 0.8s ease-in-out infinite;
-  animation-delay: var(--delay);
-}
-
-@keyframes barGrow {
-  0%, 100% { transform: scaleY(0.3); }
-  50%      { transform: scaleY(1); }
-}/* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
-/* ─── Preloader Overlay & Bars ───────────────────────────────────────── */
-#preloader {
-	position: fixed;
-	inset: 0;
-	background: #1f253e;     /* match your page background */
+	background: #1f253e; /* match your dark theme */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -4120,30 +4009,53 @@ input, select, textarea {
   
   .bar-chart {
 	display: flex;
-	gap: 0.4rem;
+	gap: 0.5rem;
 	align-items: flex-end;
   }
   
   .bar {
-	width: 8px;
-	height: 20px;
+	width: 10px;
+	height: 40px;
 	background: #4fc3f7;
-	border-radius: 4px;
+	border-radius: 5px;
 	transform-origin: bottom;
-	animation: barGrow 0.8s ease-in-out infinite;
+	animation: barGrow 1.2s ease-in-out infinite;
 	animation-delay: var(--delay);
   }
   
   @keyframes barGrow {
 	0%, 100% { transform: scaleY(0.3); }
 	50%      { transform: scaleY(1); }
+  }/* ─── Preloader Overlay & Animated Bars ────────────────────────────── */
+#preloader {
+	position: fixed;
+	inset: 0;
+	background: #1f253e; /* match your dark theme */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
   }
-  /* make the footer copyright text pop */
-  #footer .copyright li:first-child {
-	color: #ccc;
+  
+  .bar-chart {
+	display: flex;
+	gap: 0.5rem;
+	align-items: flex-end;
   }
-  #footer .copyright li:last-child {
-	color: #888;
+  
+  .bar {
+	width: 10px;
+	height: 40px;
+	background: #4fc3f7;
+	border-radius: 5px;
+	transform-origin: bottom;
+	animation: barGrow 1.2s ease-in-out infinite;
+	animation-delay: var(--delay);
+  }
+  
+  @keyframes barGrow {
+	0%, 100% { transform: scaleY(0.3); }
+	50%      { transform: scaleY(1); }
   }
   /* 1. Cursor‐follow glow */
 #banner {
@@ -4298,4 +4210,33 @@ input, select, textarea {
   @keyframes pulse {
 	0%, 100% { transform: scale(1); }
 	50%       { transform: scale(1.2); }
+  }
+  .game-toggle {
+	position: fixed;
+	right: -100px;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #2d2d44;
+	color: #fff;
+	font-weight: bold;
+	padding: 0.6rem 1.2rem;
+	border-radius: 8px 0 0 8px;
+	text-decoration: none;
+	font-size: 0.95rem;
+	transition: right 0.3s ease, background 0.3s ease;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	box-shadow: -2px 2px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  .game-toggle:hover {
+	right: 0;
+	background-color: #4fc3f7;
+	color: #000;
+  }
+  
+  .game-toggle i {
+	font-size: 1.1rem;
   }
