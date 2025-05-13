@@ -1,277 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tech Stack Builder</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: #0f172a; /* Unified theme */
-      color: #fff;
-      margin: 0;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tech Stack Builder</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        background: #0f172a;
+        color: #fff;
+        margin: 0;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .subtext {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #cbd5e1;
+      }
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 1.5rem;
+      }
+      .top-bar span {
+        font-weight: 600;
+      }
+      .options,
+      .selected-stacks {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .option,
+      .slot {
+        background: #1e293b;
+        padding: 1rem 1.2rem;
+        border-radius: 8px;
+        text-align: center;
+        min-width: 100px;
+        transition: 0.3s;
+        user-select: none;
+        color: #f1f5f9;
+        cursor: pointer;
+      }
+      .option:hover {
+        background-color: #4fc3f7;
+        color: #000;
+      }
+      .slot {
+        border: 2px dashed #94a3b8;
+        min-height: 50px;
+      }
+      .buttons {
+        margin-top: 2rem;
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+      button {
+        padding: 0.6rem 1.2rem;
+        background: #4fc3f7;
+        border: none;
+        color: #000;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background: #38bdf8;
+      }
+      .result {
+        margin-top: 2rem;
+        font-size: 1rem;
+        background: #1e293b;
+        padding: 1rem;
+        border-radius: 6px;
+        display: none;
+        max-width: 600px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      }
+      .leaderboard {
+        margin-top: 2rem;
+        background: #0f172a;
+        padding: 1rem;
+        border-radius: 6px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+      }
+      .leaderboard h3 {
+        margin-bottom: 0.8rem;
+        color: #facc15;
+      }
+      .leaderboard ul {
+        padding-left: 1rem;
+      }
+      .leaderboard li {
+        margin-bottom: 0.5rem;
+        color: #f1f5f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🧑‍💻Tech Stack Builder</h1>
+    <div class="subtext">Build a <strong>Real-Time Chat App</strong></div>
+    <div class="top-bar">
+      <span>⏱ Time Left: <strong id="timer">60s</strong></span>
+      <span>🏆 Score: <strong id="score">0</strong></span>
+    </div>
+    <div class="options">
+      <div class="option">React</div>
+      <div class="option">Angular</div>
+      <div class="option">Flask</div>
+      <div class="option">Firebase</div>
+      <div class="option">MongoDB</div>
+      <div class="option">Node.js</div>
+      <div class="option">AWS EC2</div>
+    </div>
+    <div style="margin-top: 2rem; text-align: center">
+      Tap to select your stack 👇
+    </div>
+    <div class="selected-stacks">
+      <div class="slot" id="slot1"></div>
+      <div class="slot" id="slot2"></div>
+      <div class="slot" id="slot3"></div>
+    </div>
+    <div class="buttons">
+      <button onclick="evaluateStack()">✅ Build & Evaluate</button>
+      <button onclick="resetGame()">🔁 Reset</button>
+    </div>
+    <div class="result" id="resultBox"></div>
+    <div class="leaderboard">
+      <h3>🏅 Leaderboard</h3>
+      <ul id="leaderboardList">
+        <li>Nitin - 3 stacks</li>
+        <li>You - 0 stacks</li>
+      </ul>
+    </div>
+    <audio id="dropSound" src="assets/sounds/drop.mp3" preload="auto"></audio>
+    <audio
+      id="successSound"
+      src="assets/sounds/success.mp3"
+      preload="auto"
+    ></audio>
+    <audio id="errorSound" src="assets/sounds/error.mp3" preload="auto"></audio>
+    <audio
+      id="timeupSound"
+      src="assets/sounds/timeup.mp3"
+      preload="auto"
+    ></audio>
+    <script>
+      const options = document.querySelectorAll(".option");
+      const slots = [
+        document.getElementById("slot1"),
+        document.getElementById("slot2"),
+        document.getElementById("slot3"),
+      ];
+      let selectedStacks = [];
+      let score = 0;
+      let timeLeft = 60;
+      let timerInterval;
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
+      const dropSound = document.getElementById("dropSound");
+      const successSound = document.getElementById("successSound");
+      const errorSound = document.getElementById("errorSound");
+      const timeupSound = document.getElementById("timeupSound");
 
-    .subtext {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      color: #cbd5e1;
-    }
-
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 600px;
-      margin-bottom: 1.5rem;
-    }
-
-    .top-bar span {
-      font-weight: 600;
-    }
-
-    .options, .dropzone {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .option, .drop-slot {
-      background: #1e293b;
-      padding: 1rem 1.2rem;
-      border-radius: 8px;
-      cursor: grab;
-      text-align: center;
-      min-width: 100px;
-      transition: 0.3s;
-      user-select: none;
-      color: #f1f5f9;
-    }
-
-    .option:hover {
-      background-color: #4fc3f7;
-      color: #000;
-    }
-
-    .drop-slot {
-      border: 2px dashed #94a3b8;
-      min-height: 50px;
-      cursor: pointer;
-    }
-
-    .drop-slot.filled {
-      border: 2px solid #4fc3f7;
-      background-color: #1e293b;
-    }
-
-    .buttons {
-      margin-top: 2rem;
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    button {
-      padding: 0.6rem 1.2rem;
-      background: #4fc3f7;
-      border: none;
-      color: #000;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background: #38bdf8;
-    }
-
-    .result {
-      margin-top: 2rem;
-      font-size: 1rem;
-      background: #1e293b;
-      padding: 1rem;
-      border-radius: 6px;
-      display: none;
-      max-width: 600px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .leaderboard {
-      margin-top: 2rem;
-      background: #0f172a;
-      padding: 1rem;
-      border-radius: 6px;
-      width: 100%;
-      max-width: 500px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
-    }
-
-    .leaderboard h3 {
-      margin-bottom: 0.8rem;
-      color: #facc15;
-    }
-
-    .leaderboard ul {
-      padding-left: 1rem;
-    }
-
-    .leaderboard li {
-      margin-bottom: 0.5rem;
-      color: #f1f5f9;
-    }
-  </style>
-</head>
-<body>
-  <h1>🧑‍💻Tech Stack Builder</h1>
-  <div class="subtext">Build a <strong>Real-Time Chat App</strong></div>
-
-  <div class="top-bar">
-    <span>⏱ Time Left: <strong id="timer">60s</strong></span>
-    <span>🏆 Score: <strong id="score">0</strong></span>
-  </div>
-
-  <div class="options">
-    <div class="option" draggable="true">React</div>
-    <div class="option" draggable="true">Angular</div>
-    <div class="option" draggable="true">Flask</div>
-    <div class="option" draggable="true">Firebase</div>
-    <div class="option" draggable="true">MongoDB</div>
-    <div class="option" draggable="true">Node.js</div>
-    <div class="option" draggable="true">AWS EC2</div>
-  </div>
-
-  <div style="margin-top: 2rem; text-align:center;">Drop your chosen stack here 👇</div>
-  <div class="dropzone">
-    <div class="drop-slot"></div>
-    <div class="drop-slot"></div>
-    <div class="drop-slot"></div>
-  </div>
-
-  <div class="buttons">
-    <button onclick="evaluateStack()">✅ Build & Evaluate</button>
-    <button onclick="resetGame()">🔁 Reset</button>
-  </div>
-
-  <div class="result" id="resultBox"></div>
-
-  <div class="leaderboard">
-    <h3>🏅 Leaderboard</h3>
-    <ul id="leaderboardList">
-      <li>Nitin - 3 stacks</li>
-      <li>You - 0 stacks</li>
-    </ul>
-  </div>
-
-  <!-- Sound Effects -->
-  <!-- Sound Effects -->
-<audio id="dropSound" src="assets/sounds/drop.mp3" preload="auto"></audio>
-<audio id="successSound" src="assets/sounds/success.mp3" preload="auto"></audio>
-<audio id="errorSound" src="assets/sounds/error.mp3" preload="auto"></audio>
-<audio id="timeupSound" src="assets/sounds/timeup.mp3" preload="auto"></audio>
-
-  <script>
-    const options = document.querySelectorAll('.option');
-    const slots = document.querySelectorAll('.drop-slot');
-    let draggedItem = null;
-    let score = 0;
-    let timeLeft = 60;
-    let timerInterval;
-
-    const dropSound = document.getElementById('dropSound');
-    const successSound = document.getElementById('successSound');
-    const errorSound = document.getElementById('errorSound');
-    const timeupSound = document.getElementById('timeupSound');
-
-    options.forEach(opt => {
-      opt.addEventListener('dragstart', () => draggedItem = opt);
-    });
-
-    slots.forEach(slot => {
-      slot.addEventListener('dragover', e => e.preventDefault());
-      slot.addEventListener('drop', () => {
-        if (!slot.classList.contains('filled')) {
-          slot.textContent = draggedItem.textContent;
-          slot.classList.add('filled');
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const tech = option.innerText;
+          if (selectedStacks.length >= 3 || selectedStacks.includes(tech))
+            return;
+          selectedStacks.push(tech);
+          slots[selectedStacks.length - 1].innerText = tech;
           playSound(dropSound);
-        }
+        });
       });
-    });
 
-    function evaluateStack() {
-      const selected = Array.from(slots).map(s => s.textContent.trim());
-      const result = document.getElementById('resultBox');
-      let message = "🤔 Not quite ideal for real-time. Try again!";
+      function evaluateStack() {
+        const selected = selectedStacks;
+        const result = document.getElementById("resultBox");
+        let message = "🤔 Not quite ideal for real-time. Try again!";
 
-      if (selected.includes("React") && selected.includes("Firebase")) {
-        message = "✅ Solid pick! React + Firebase is perfect for real-time apps.";
-        score += 3;
-        playSound(successSound);
-      } else if (selected.includes("Angular") && selected.includes("Firebase")) {
-        message = "👍 Good! Angular & Firebase is a proven combo too.";
-        score += 2;
-        playSound(successSound);
-      } else if (selected.includes("Node.js") && selected.includes("MongoDB")) {
-        message = "🟡 Okay stack, but you’ll need real-time infra like Socket.IO.";
-        score += 1;
-        playSound(errorSound);
-      } else {
-        playSound(errorSound);
+        if (selected.includes("React") && selected.includes("Firebase")) {
+          message =
+            "✅ Solid pick! React + Firebase is perfect for real-time apps.";
+          score += 3;
+          playSound(successSound);
+        } else if (
+          selected.includes("Angular") &&
+          selected.includes("Firebase")
+        ) {
+          message = "👍 Good! Angular & Firebase is a proven combo too.";
+          score += 2;
+          playSound(successSound);
+        } else if (
+          selected.includes("Node.js") &&
+          selected.includes("MongoDB")
+        ) {
+          message =
+            "🟡 Okay stack, but you’ll need real-time infra like Socket.IO.";
+          score += 1;
+          playSound(errorSound);
+        } else {
+          playSound(errorSound);
+        }
+
+        document.getElementById("score").textContent = score;
+        result.textContent = message;
+        result.style.display = "block";
       }
 
-      document.getElementById('score').textContent = score;
-      result.textContent = message;
-      result.style.display = "block";
-    }
+      function playSound(audio) {
+        audio.currentTime = 0;
+        audio.play();
+      }
 
-    function playSound(audio) {
-      audio.currentTime = 0;
-      audio.play();
-    }
+      function startTimer() {
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          document.getElementById("timer").textContent = `${timeLeft}s`;
 
-    function startTimer() {
-      timerInterval = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer').textContent = `${timeLeft}s`;
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            playSound(timeupSound);
+            document.getElementById("resultBox").textContent =
+              "⏰ Time's up! Try again.";
+            document.getElementById("resultBox").style.display = "block";
+          }
+        }, 1000);
+      }
 
-        if (timeLeft <= 0) {
-          clearInterval(timerInterval);
-          playSound(timeupSound);
-          document.getElementById('resultBox').textContent = "⏰ Time's up! Try again.";
-          document.getElementById('resultBox').style.display = 'block';
-        }
-      }, 1000);
-    }
+      function resetGame() {
+        selectedStacks = [];
+        slots.forEach((slot) => (slot.innerText = ""));
+        document.getElementById("resultBox").style.display = "none";
+        score = 0;
+        timeLeft = 60;
+        document.getElementById("score").textContent = score;
+        document.getElementById("timer").textContent = `${timeLeft}s`;
+        clearInterval(timerInterval);
+        startTimer();
+      }
 
-    function resetGame() {
-      slots.forEach(slot => {
-        slot.textContent = "";
-        slot.classList.remove('filled');
-      });
-      document.getElementById('resultBox').style.display = 'none';
-      score = 0;
-      timeLeft = 60;
-      document.getElementById('score').textContent = score;
-      document.getElementById('timer').textContent = `${timeLeft}s`;
-      clearInterval(timerInterval);
       startTimer();
-    }
-
-    // Auto-start
-    startTimer();
-  </script>
-</body>
+    </script>
+  </body>
 </html>
