@@ -41,17 +41,16 @@ const projects = [
 
 const experienceItems = [
   {
-    title: "Data Analyst Intern",
-    subtitle: "Hypweb Solutions LLP (Remote)",
-    period: "Jan 2025 – May 2025",
-    description: [
-      "Built internal APIs using Python and SQL to automate data workflows",
-      "Designed ETL pipelines and reduced manual work by 35%",
-      "Integrated backend scripts with dashboards used by 50+ users",
-      "Worked in Agile sprints, contributed to 5+ production releases",
-    ],
-  },
-];
+  title: "Software Developer Intern",
+  subtitle: "Hypweb Solutions LLP (Remote)",
+  period: "Jan 2025 – May 2025",
+  description: [
+    "Developed data pipelines using Python and SQL, reducing reporting time by 35%",
+    "Designed internal REST APIs for dashboards accessed by 50+ stakeholders",
+    "Automated CI/CD pipelines using GitHub Actions across 3 deployment stages",
+    "Delivered 5+ production-ready modules ahead of deadlines in Agile sprints",
+  ],
+},
 
 const educationItems = [
   {
@@ -312,10 +311,10 @@ export default function Portfolio() {
                     several projects using Docker and AWS.
                   </p>
                   <p className="text-lg">
-                    As a Data Analyst Intern at Hypweb Solutions, I developed
-                    REST APIs, automated data processes, and collaborated across
-                    teams to deliver working features. I enjoy solving problems
-                    and improving systems through clean and scalable code.
+                    As a Software Developer Intern at Hypweb Solutions LLP, I developed
+                    Python + SQL pipelines, built internal REST APIs, and automated CI/CD
+                    using GitHub Actions. I collaborated in Agile sprints and contributed to
+                    5+ production-ready modules deployed across three environments.
                   </p>
                 </div>
               </div>
