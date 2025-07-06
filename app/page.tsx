@@ -41,16 +41,17 @@ const projects = [
 
 const experienceItems = [
   {
-  title: "Software Developer Intern",
-  subtitle: "Hypweb Solutions LLP (Remote)",
-  period: "Jan 2025 – May 2025",
-  description: [
-    "Developed data pipelines using Python and SQL, reducing reporting time by 35%",
-    "Designed internal REST APIs for dashboards accessed by 50+ stakeholders",
-    "Automated CI/CD pipelines using GitHub Actions across 3 deployment stages",
-    "Delivered 5+ production-ready modules ahead of deadlines in Agile sprints",
-  ],
-},
+    title: "Software Developer Intern",
+    subtitle: "Hypweb Solutions LLP (Remote)",
+    period: "Jan 2025 – May 2025",
+    description: [
+      "Developed data pipelines using Python and SQL, reducing reporting time by 35%",
+      "Designed internal REST APIs for dashboards accessed by 50+ stakeholders",
+      "Automated CI/CD pipelines using GitHub Actions across 3 deployment stages",
+      "Delivered 5+ production-ready modules ahead of deadlines in Agile sprints",
+    ],
+  },
+]; 
 
 const educationItems = [
   {
