@@ -17,7 +17,7 @@ const projects = [
     fullDescription:
       "A comprehensive e-commerce backend system featuring secure JWT authentication, role-based access control, and automated MySQL triggers for inventory management. The API handles user management, product catalog, order processing, and payment integration. Deployed on AWS EC2 with Docker containerization and CI/CD pipeline for seamless updates.",
     techStack: "Java, Spring Boot, MySQL, Docker, AWS EC2",
-    github: "https://github.com/Nitin3290/ecommerce-api",
+    github: "https://github.com/Nitin3290/ecommerce-backend-api",
   },
   {
     title: "AutoInsight AI",
